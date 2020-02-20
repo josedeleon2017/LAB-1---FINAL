@@ -3,3 +3,8 @@ C:\Users\José De León\Desktop\FINAL LAB 1\LinealStructures\bin\Debug\LinealStr
 C:\Users\José De León\Desktop\FINAL LAB 1\LinealStructures\bin\Debug\LinealStructures.pdb
 C:\Users\José De León\Desktop\FINAL LAB 1\LinealStructures\obj\Debug\LinealStructures.dll
 C:\Users\José De León\Desktop\FINAL LAB 1\LinealStructures\obj\Debug\LinealStructures.pdb
+C:\Users\jamor\Desktop\prueba\LAB-1---FINAL\LinealStructures\bin\Debug\LinealStructures.dll
+C:\Users\jamor\Desktop\prueba\LAB-1---FINAL\LinealStructures\bin\Debug\LinealStructures.pdb
+C:\Users\jamor\Desktop\prueba\LAB-1---FINAL\LinealStructures\obj\Debug\LinealStructures.csprojAssemblyReference.cache
+C:\Users\jamor\Desktop\prueba\LAB-1---FINAL\LinealStructures\obj\Debug\LinealStructures.dll
+C:\Users\jamor\Desktop\prueba\LAB-1---FINAL\LinealStructures\obj\Debug\LinealStructures.pdb

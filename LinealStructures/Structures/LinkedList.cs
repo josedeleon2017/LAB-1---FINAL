@@ -45,12 +45,81 @@ namespace LinealStructures.Structures
 
         public void Delete(T value)
         {
-           
+            var current = Head;
+            if (Find(value))
+            {
+                if (current.Value.CompareTo(value) == 0)
+                {
+                    Head = Head.Next;
+                    current = null;
+                    Count--;
+                }
+                else
+                {
+                    while (current.Value.CompareTo(value) != 0)
+                    {
+                        current = current.Next;
+                    }
+                    var aux = Head;
+                    while(aux.Next != current)
+                    {
+                        aux = aux.Next;
+                    }
+                    aux.Next = current.Next;
+                    Count--;
+                }
+            }
+            /*
+            var current = Head;
+            int i = 0;
+            bool v = false;
+            while(current.Next != null)
+            {
+                if (value.CompareTo(current.Value) == 0 && v == false)
+                {
+                    var c = Head;
+                    if (i == 0)
+                    {
+                        if (Head.Next == null)
+                        {
+                            Head = null;
+                        }
+                        else
+                        {
+                            Head = current;
+                        }
+                    }
+                    else
+                    {
+                        c = Head;
+                        for (int j = 0; j < i-1; j++)
+                        {
+                            c = c.Next;
+                        }
+                        c.Next = c.Next.Next;
+                        v = true;
+                    }
+                }
+                else
+                {
+                    current = current.Next;
+                    i++;
+                }
+            }
+            */
         }
 
         public bool Find(T value)
         {
-            return true;
+            var current = Head;
+            while (current != null)
+            {
+                if (current.Value.CompareTo(value) == 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public IEnumerator<T> GetEnumerator()

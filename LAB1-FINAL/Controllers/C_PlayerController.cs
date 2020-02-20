@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using System.Diagnostics;
 using LAB1_FINAL.Models;
 using LAB1_FINAL.Helpers;
 
@@ -11,11 +12,14 @@ namespace LAB1_FINAL.Controllers
 {
     public class C_PlayerController : Controller
     {
+        Stopwatch ST = new Stopwatch();
         // GET: C_Player
         public ActionResult Index()
         {
+            ST.Restart();
             var player1 = new PlayerModel { Name = "José", LastName = "De Leon", Position = "MD", Club = "CHI", Salary = 30000, };
             PlayerModel.C_Save(player1);
+            PlayerModel.Log(Convert.ToString(ST.ElapsedTicks), "Consulta de Lista Artesanal.");
             return View(Storage.Instance.C_playerList);
         }
 
@@ -39,8 +43,10 @@ namespace LAB1_FINAL.Controllers
         // POST: C_Player/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
-        {          
-                // TODO: Add insert logic here
+        {
+
+            // TODO: Add insert logic here
+            ST.Restart();
                 try
                 {
                     var player = new PlayerModel
@@ -53,12 +59,15 @@ namespace LAB1_FINAL.Controllers
                     };
 
                     PlayerModel.C_Save(player);
-                    return RedirectToAction("Index");
+                PlayerModel.Log(Convert.ToString(ST.ElapsedTicks), "Creación manual de jugador.");
+                return RedirectToAction("Index");
                 }
                 catch
                 {
                     return View();
-                }                     
+                }    
+                
+                
         }
 
         // GET: C_Player/Edit/5
@@ -86,17 +95,20 @@ namespace LAB1_FINAL.Controllers
         // GET: C_Player/Delete/5
         public ActionResult Delete(string id)
         {
+            ST.Restart();
             try
             {
                 var player = new PlayerModel();
                 foreach (var item in Storage.Instance.C_playerList)
                 {
-                    if (item.Name == id)
+                    if (item.Name+item.LastName+item.Club == id)
                     {
                         player = item;
                     }
                 }
+                PlayerModel.C_Delete(player);
                 //AGREGAR DELETE
+                PlayerModel.Log(Convert.ToString(ST.ElapsedTicks), "Eliminación de jugador de lista artesanal.");
                 return RedirectToAction("Index");
             }
             catch 
@@ -128,6 +140,7 @@ namespace LAB1_FINAL.Controllers
         }
         public ActionResult Index_player(FormCollection collection)
         {
+            ST.Restart();
             try
             {
                 string idName = collection["Name"];
@@ -140,7 +153,9 @@ namespace LAB1_FINAL.Controllers
                         player = item;
                     }
                 }
+                PlayerModel.Log(Convert.ToString(ST.ElapsedTicks), "Búsqueda de jugador en lista artesanal.");
                 return View(player);
+
             }
             catch
             {
@@ -162,6 +177,7 @@ namespace LAB1_FINAL.Controllers
         [HttpPost]
         public ActionResult SearchByPosition(FormCollection collection)
         {
+            ST.Restart();
             // TODO: Add insert logic here
             try
             {
@@ -176,6 +192,7 @@ namespace LAB1_FINAL.Controllers
                         Storage.Instance.C_CurrentplayerList.AddLast(current);
                     }
                 }
+                PlayerModel.Log(Convert.ToString(ST.ElapsedTicks), "Búsqueda por posición lista artesanal.");
                 return RedirectToAction("Index_positions");
             }
             catch
@@ -187,6 +204,7 @@ namespace LAB1_FINAL.Controllers
         [HttpPost]
         public ActionResult CSV(HttpPostedFileBase postedfile)
         {
+            ST.Restart();
             string FilePath;
             if (postedfile != null)
             {
@@ -222,6 +240,7 @@ namespace LAB1_FINAL.Controllers
                     }
                 }
             }
+            PlayerModel.Log(Convert.ToString(ST.ElapsedTicks), "Importación de datos a lista artesanal desde un CSV.");
             return RedirectToAction("Index");
         }
 

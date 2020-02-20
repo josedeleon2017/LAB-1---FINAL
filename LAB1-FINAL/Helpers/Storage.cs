@@ -24,5 +24,6 @@ namespace LAB1_FINAL.Helpers
 
         public LinkedList<PlayerModel> S_CurrentplayerList = new LinkedList<PlayerModel>();
         public LinkedList<PlayerModel> C_CurrentplayerList = new LinkedList<PlayerModel>();
+        public string mostrarlog = "prueba";
     }
 }
