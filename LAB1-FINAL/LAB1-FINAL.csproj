@@ -178,6 +178,10 @@
     <Content Include="Views\C_Player\Index_player.cshtml" />
     <Content Include="Views\S_Player\SearchByName.cshtml" />
     <Content Include="Views\S_Player\Index_player.cshtml" />
+    <Content Include="Views\C_Player\SearchByClub.cshtml" />
+    <Content Include="Views\C_Player\Index_club.cshtml" />
+    <Content Include="Views\S_Player\SearchByClub.cshtml" />
+    <Content Include="Views\S_Player\Index_club.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

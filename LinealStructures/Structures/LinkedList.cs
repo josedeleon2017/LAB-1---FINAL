@@ -45,12 +45,44 @@ namespace LinealStructures.Structures
 
         public void Delete(T value)
         {
-           
+            var current = Head;
+            if (Find(value))
+            {
+                if (current.Value.CompareTo(value)==0)
+                {
+                    Head = Head.Next;
+                    current = null;
+                    Count--;
+                }
+                else
+                {
+                    while (current.Value.CompareTo(value)!=0)
+                    {
+                        current = current.Next;
+                    }
+                    var aux = Head;
+                    while (aux.Next != current)
+                    {
+                        aux = aux.Next;
+                    }
+                    aux.Next =current.Next;
+                    Count--;
+                }
+            }
         }
 
         public bool Find(T value)
         {
-            return true;
+            var current = Head;
+            while (current != null)
+            {
+                if (current.Value.CompareTo(value)==0)
+                {
+                    return true;
+                }
+                current = current.Next;
+            }
+            return false;
         }
 
         public IEnumerator<T> GetEnumerator()

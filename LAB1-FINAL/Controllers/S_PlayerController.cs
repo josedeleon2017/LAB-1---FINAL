@@ -57,7 +57,7 @@ namespace LAB1_FINAL.Controllers
         }
 
         // GET: S_Player/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string name)
         {
             return View();
         }
@@ -164,6 +164,42 @@ namespace LAB1_FINAL.Controllers
                     }
                 }
                 return RedirectToAction("Index_positions");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //Search on C# LinkedList players with the same club
+        public ActionResult Index_club()
+        {
+            return View(Storage.Instance.S_CurrentplayerList);
+        }
+        // GET: S_Player/SearchByPosition/5
+        public ActionResult SearchByClub()
+        {
+            return View();
+        }
+        // POST: S_Player/SearchByPosition
+        [HttpPost]
+        public ActionResult SearchByClub(FormCollection collection)
+        {
+            // TODO: Add insert logic here
+            try
+            {
+                string idClub = collection["Club"];
+                Storage.Instance.C_CurrentplayerList.Clear();
+                foreach (var item in Storage.Instance.S_playerList)
+                {
+                    if (item.Club == idClub)
+                    {
+                        var current = new PlayerModel();
+                        current = item;
+                        Storage.Instance.S_CurrentplayerList.AddLast(current);
+                    }
+                }
+                return RedirectToAction("Index_club");
             }
             catch
             {
