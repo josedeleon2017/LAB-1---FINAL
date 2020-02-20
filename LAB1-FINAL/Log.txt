@@ -1,1 +1,15 @@
-| Tiempo: 281064ticks. | Operación realizada:Consulta de Lista C#. |
+| Tiempo: 33425ticks. | Operación realizada:Consulta de Lista Artesanal. |
+| Tiempo: 386348ticks. | Operación realizada:Importación de datos a lista artesanal desde un CSV. |
+| Tiempo: 570ticks. | Operación realizada:Consulta de Lista Artesanal. |
+| Tiempo: 1919ticks. | Operación realizada:Búsqueda por posición lista artesanal. |
+| Tiempo: 583ticks. | Operación realizada:Consulta de Lista Artesanal. |
+| Tiempo: 912ticks. | Operación realizada:Consulta de Lista C#. |
+| Tiempo: 347124ticks. | Operación realizada:Importación de jugadores en Lista C# mediante CSV. |
+| Tiempo: 18ticks. | Operación realizada:Consulta de Lista C#. |
+| Tiempo: 188ticks. | Operación realizada:Creación de jugador manual en Lista C#. |
+| Tiempo: 21ticks. | Operación realizada:Consulta de Lista C#. |
+| Tiempo: 525ticks. | Operación realizada:Búsqueda de jugador en Lista C#. |
+| Tiempo: 234ticks. | Operación realizada:Consulta de Lista Artesanal. |
+| Tiempo: 357ticks. | Operación realizada:Creación manual de jugador. |
+| Tiempo: 183ticks. | Operación realizada:Consulta de Lista Artesanal. |
+| Tiempo: 221ticks. | Operación realizada:Consulta de Lista Artesanal. |
