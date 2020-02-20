@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.IO;
 using LAB1_FINAL.Models;
 using LAB1_FINAL.Helpers;
 
@@ -21,6 +21,11 @@ namespace LAB1_FINAL.Controllers
 
         // GET: C_Player/Details/5
         public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        public ActionResult C_CSV()
         {
             return View();
         }
@@ -179,6 +184,46 @@ namespace LAB1_FINAL.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult CSV(HttpPostedFileBase postedfile)
+        {
+            string FilePath;
+            if (postedfile != null)
+            {
+                string Path = Server.MapPath("~/Subidas/");
+                if (!Directory.Exists(Path))
+                {
+                    Directory.CreateDirectory(Path);
+                }
+                FilePath = Path + System.IO.Path.GetFileName(postedfile.FileName);
+                postedfile.SaveAs(FilePath);
+                string csvData = System.IO.File.ReadAllText(FilePath);
+                foreach (string row in csvData.Split('\n'))
+                {
+                    if (!string.IsNullOrEmpty(row))
+                    {
+                        try
+                        {
+
+                            var player = new PlayerModel
+                            {
+                                Name = row.Split(',')[2],
+                                LastName = row.Split(',')[1],
+                                Club = row.Split(',')[0],
+                                Position = row.Split(',')[3],
+                                Salary = Convert.ToInt32(Convert.ToDouble(row.Split(',')[4])),
+
+                            };
+                            PlayerModel.C_Save(player);
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+            }
+            return RedirectToAction("Index");
+        }
 
     }
 }
