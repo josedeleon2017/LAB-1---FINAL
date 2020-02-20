@@ -59,7 +59,7 @@ namespace LAB1_FINAL.Controllers
         // GET: C_Player/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return RedirectToAction("Index");
         }
 
         // POST: C_Player/Edit/5
@@ -79,9 +79,25 @@ namespace LAB1_FINAL.Controllers
         }
 
         // GET: C_Player/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            try
+            {
+                var player = new PlayerModel();
+                foreach (var item in Storage.Instance.C_playerList)
+                {
+                    if (item.Name == id)
+                    {
+                        player = item;
+                    }
+                }
+                //AGREGAR DELETE
+                return RedirectToAction("Index");
+            }
+            catch 
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         // POST: C_Player/Delete/5
@@ -99,5 +115,70 @@ namespace LAB1_FINAL.Controllers
                 return View();
             }
         }
+
+        //Search on LinkedList of C# players with espcific name 
+        public ActionResult SearchByName()
+        {
+            return View();
+        }
+        public ActionResult Index_player(FormCollection collection)
+        {
+            try
+            {
+                string idName = collection["Name"];
+                PlayerModel player = new PlayerModel();
+
+                foreach (var item in Storage.Instance.C_playerList)
+                {
+                    if (item.Name == idName || item.LastName == idName)
+                    {
+                        player = item;
+                    }
+                }
+                return View(player);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //Search on LinkedList of C# players with the same position
+        public ActionResult Index_positions()
+        {
+            return View(Storage.Instance.C_CurrentplayerList);
+        }
+        // GET: S_Player/SearchByPosition/5
+        public ActionResult SearchByPosition()
+        {
+            return View();
+        }
+        // POST: S_Player/SearchByPosition
+        [HttpPost]
+        public ActionResult SearchByPosition(FormCollection collection)
+        {
+            // TODO: Add insert logic here
+            try
+            {
+                string idPosition = collection["Position"];
+                Storage.Instance.S_CurrentplayerList.Clear();
+                foreach (var item in Storage.Instance.C_playerList)
+                {
+                    if (item.Position == idPosition)
+                    {
+                        var current = new PlayerModel();
+                        current = item;
+                        Storage.Instance.C_CurrentplayerList.AddLast(current);
+                    }
+                }
+                return RedirectToAction("Index_positions");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
     }
 }

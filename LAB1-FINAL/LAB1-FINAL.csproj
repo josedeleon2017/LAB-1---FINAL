@@ -170,6 +170,14 @@
     <Content Include="Views\C_Player\Index.cshtml" />
     <Content Include="Views\C_Player\Create.cshtml" />
     <Content Include="Views\S_Player\Create.cshtml" />
+    <Content Include="Views\S_Player\Index_positions.cshtml" />
+    <Content Include="Views\S_Player\SearchByPosition.cshtml" />
+    <Content Include="Views\C_Player\SearchByPosition.cshtml" />
+    <Content Include="Views\C_Player\Index_positions.cshtml" />
+    <Content Include="Views\C_Player\SearchByName.cshtml" />
+    <Content Include="Views\C_Player\Index_player.cshtml" />
+    <Content Include="Views\S_Player\SearchByName.cshtml" />
+    <Content Include="Views\S_Player\Index_player.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

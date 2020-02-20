@@ -15,8 +15,6 @@ namespace LinealStructures.Structures
         
         public void Insert(T value)
         {
-           
-
             if (Head == null)
             {
                 Head = new Node<T>(value);
@@ -34,6 +32,7 @@ namespace LinealStructures.Structures
             Count++;
         }
 
+
         public T Get(int position)
         {
             var current = Head;
@@ -44,23 +43,23 @@ namespace LinealStructures.Structures
             return current.Value;
         }
 
-        public void Delete()
+        public void Delete(T value)
         {
-            throw new NotImplementedException();
+           
         }
 
         public bool Find(T value)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            var node = Head;
-            while (node != null)
+            var current = Head;
+            while (current != null)
             {
-                yield return node.Value;
-                node = node.Next;
+                yield return current.Value;
+                current = current.Next;
             }
         }
 

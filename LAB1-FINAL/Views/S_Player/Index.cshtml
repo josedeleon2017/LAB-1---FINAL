@@ -7,7 +7,9 @@
 <h2>Standar List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create new", "Create")
+    |  @Html.ActionLink("Search name", "SearchByName")
+    |  @Html.ActionLink("Search positions", "SearchByPosition")
 </p>
 <table class="table">
     <tr>
@@ -48,8 +50,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new {  id=item.Name })
         </td>
     </tr>
 }

@@ -79,25 +79,97 @@ namespace LAB1_FINAL.Controllers
         }
 
         // GET: S_Player/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: S_Player/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                var player = new PlayerModel();
+                foreach (var item in Storage.Instance.S_playerList)
+                {
+                    if (item.Name == id)
+                    {
+                        player = item;
+                    }
+                }
+                Storage.Instance.S_playerList.Remove(player);
                 return RedirectToAction("Index");
+
             }
             catch
             {
                 return View();
             }
         }
+
+        // POST: S_Player/Delete/5
+        [HttpPost]
+        public ActionResult Delete(string id, FormCollection collection)
+        {
+            return View();
+        }
+
+        //Search on LinkedList of C# players with espcific name 
+       public ActionResult SearchByName()
+        {
+            return View();
+        }
+        public ActionResult Index_player(FormCollection collection)
+        {
+            try
+            {
+                string idName = collection["Name"];
+                PlayerModel player = new PlayerModel();
+
+                foreach (var item in Storage.Instance.S_playerList)
+                {
+                    if (item.Name == idName || item.LastName == idName)
+                    {
+                        player = item;
+                    }
+                }
+                return View(player);
+            }
+            catch 
+            {
+                return View();
+            }
+        }
+
+        //Search on LinkedList of C# players with the same position 
+        public ActionResult Index_positions()
+        {
+            return View(Storage.Instance.S_CurrentplayerList);
+        }
+        // GET: S_Player/SearchByPosition/5
+        public ActionResult SearchByPosition()
+        {
+            return View();
+        }
+        // POST: S_Player/SearchByPosition
+        [HttpPost]
+        public ActionResult SearchByPosition(FormCollection collection)
+        {
+            // TODO: Add insert logic here
+            try
+            {
+                string idPosition = collection["Position"];
+                Storage.Instance.S_CurrentplayerList.Clear();
+                foreach (var item in Storage.Instance.S_playerList)
+                {
+                    if (item.Position == idPosition)
+                    {
+                        var current = new PlayerModel();
+                        current = item;
+                        Storage.Instance.S_CurrentplayerList.AddLast(current);
+                    }
+                }
+                return RedirectToAction("Index_positions");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }

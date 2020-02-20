@@ -1,17 +1,11 @@
 ﻿@model IEnumerable<LAB1_FINAL.Models.PlayerModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index_positions";
 }
 
-<h2>Custom List</h2>
+<h2>Positions List</h2>
 
-<p>
-    @Html.ActionLink("Create new", "Create") |
-    @Html.ActionLink("Search name", "SearchByName") |
-    @Html.ActionLink("Search positions", "SearchByPosition")
-
-</p>
 <table class="table">
     <tr>
         <th>
@@ -49,11 +43,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Salary)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.Name })
-        </td>
     </tr>
 }
 
 </table>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

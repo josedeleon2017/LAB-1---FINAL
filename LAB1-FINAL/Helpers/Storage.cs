@@ -19,8 +19,10 @@ namespace LAB1_FINAL.Helpers
             }
         }
 
-        //AGREGAR ESTRUCTURA AQUI
         public LinealStructures.Structures.LinkedList<PlayerModel> C_playerList = new LinealStructures.Structures.LinkedList<PlayerModel>();
         public LinkedList<PlayerModel> S_playerList = new LinkedList<PlayerModel>();
+
+        public LinkedList<PlayerModel> S_CurrentplayerList = new LinkedList<PlayerModel>();
+        public LinkedList<PlayerModel> C_CurrentplayerList = new LinkedList<PlayerModel>();
     }
 }
