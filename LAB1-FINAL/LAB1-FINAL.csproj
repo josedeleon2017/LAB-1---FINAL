@@ -178,10 +178,15 @@
     <Content Include="Views\C_Player\Index_player.cshtml" />
     <Content Include="Views\S_Player\SearchByName.cshtml" />
     <Content Include="Views\S_Player\Index_player.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\C_Player\SearchByClub.cshtml" />
     <Content Include="Views\C_Player\Index_club.cshtml" />
     <Content Include="Views\S_Player\SearchByClub.cshtml" />
     <Content Include="Views\S_Player\Index_club.cshtml" />
+=======
+    <Content Include="Views\S_Player\S_CSV.cshtml" />
+    <Content Include="Views\C_Player\C_CSV.cshtml" />
+>>>>>>> 9d74e68f2ed4cd4982267d297ecac181bf56b333
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
